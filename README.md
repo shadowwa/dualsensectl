@@ -42,7 +42,8 @@ Also installed by Steam, so you may already have it configured. If not, create `
 
 ### Credit
 
-  nowrep for the original dualsensectl code
-  the following docs:
-  - https://controllers.fandom.com/wiki/Sony_DualSense/Data_Structures
-  - https://gist.github.com/Nielk1/6d54cc2c00d2201ccb8c2720ad7538db
+nowrep for the original dualsensectl code
+
+the following docs:
+ - https://controllers.fandom.com/wiki/Sony_DualSense/Data_Structures
+ - https://gist.github.com/Nielk1/6d54cc2c00d2201ccb8c2720ad7538db
