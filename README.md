@@ -12,6 +12,13 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
       player-leds NUMBER                       Set player LEDs (1-5) or disabled (0)
       microphone STATE                         Enable (on) or disable (off) microphone
       microphone-led STATE                     Enable (on) or disable (off) microphone LED
+      speaker STATE                            Toggle to 'internal' speaker, 'headphone' or both
+      volume VOLUME                            Set audio volume (0-255) of internal speaker and headphone
+      trigger TRIGGER off                      remove all effects
+      trigger TRIGGER feedback POSITION STRENGTH  set a resistance starting at position with a defined strength
+      trigger TRIGGER weapon START STOP STRENGTH  Emulate weapon like gun trigger
+      trigger TRIGGER vibration POSITION AMPLITUDE FREQUENCY  Vibrates motor arm around specified position
+      trigger TRIGGER MODE [PARAMS]            set the trigger (left, right or both) mode with parameters (up to 9)
 
 
 ### Dependencies
@@ -22,7 +29,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 ### Building
 
     make && make install
-    
+
 ### udev rules
 
 Also installed by Steam, so you may already have it configured. If not, create `/etc/udev/rules.d/70-dualsensectl.rules`:
@@ -32,3 +39,10 @@ Also installed by Steam, so you may already have it configured. If not, create `
 
     # PS5 DualSense controller over bluetooth hidraw
     KERNEL=="hidraw*", KERNELS=="*054C:0CE6*", MODE="0660", TAG+="uaccess"
+
+### Credit
+
+nowrep for the original dualsensectl code
+the following docs:
+https://controllers.fandom.com/wiki/Sony_DualSense/Data_Structures
+https://gist.github.com/Nielk1/6d54cc2c00d2201ccb8c2720ad7538db
