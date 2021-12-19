@@ -965,11 +965,22 @@ static void print_help()
     printf("  speaker STATE                            Toggle to 'internal' speaker, 'headphone' or both\n");
     printf("  volume VOLUME                            Set audio volume (0-255) of internal speaker and headphone\n");
     printf("  trigger TRIGGER off                      remove all effects\n");
-    printf("  trigger TRIGGER feedback POSITION STRENGTH  set a resistance starting at position with a defined strength\n");
-    printf("  trigger TRIGGER weapon START STOP STRENGTH  Emulate weapon like gun trigger\n");
-    printf("  trigger TRIGGER vibration POSITION AMPLITUDE FREQUENCY  Vibrates motor arm around specified position\n");
-    printf("  trigger TRIGGER feedback-raw STRENGTH[10]  set a resistance starting using array of strength\n");
-    printf("  trigger TRIGGER vibration-raw AMPLITUDE[10] FREQUENCY  Vibrates motor arm at position and strength specified by an array of amplitude\n");
+    printf("  trigger TRIGGER feedback POSITION STRENGTH\n\
+                                           set a resistance starting at position with a defined strength\n");
+    printf("  trigger TRIGGER weapon START STOP STRENGTH\n\
+                                           Emulate weapon like gun trigger\n");
+    printf("  trigger TRIGGER bow START STOP STRENGTH SNAPFORCE\n\
+                                           Emulate weapon like bow\n");
+    printf("  trigger TRIGGER galloping START STOP FIRST_FOOT SECOND_FOOT FREQUENCY\n\
+                                           Emulate a galloping\n");
+    printf("  trigger TRIGGER machine START STOP STRENGTH_A STRENGTH_B FREQUENCY PERIOD\n\
+                                           Switch vibration between to strength at a specified period\n");
+    printf("  trigger TRIGGER vibration POSITION AMPLITUDE FREQUENCY \n\
+                                           Vibrates motor arm around specified position\n");
+    printf("  trigger TRIGGER feedback-raw STRENGTH[10]\n\
+                                           set a resistance starting using array of strength\n");
+    printf("  trigger TRIGGER vibration-raw AMPLITUDE[10] FREQUENCY\n\
+                                           Vibrates motor arm at position and strength specified by an array of amplitude\n");
     printf("  trigger TRIGGER MODE [PARAMS]            set the trigger (left, right or both) mode with parameters (up to 9)\n");
 }
 
