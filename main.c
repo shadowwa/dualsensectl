@@ -205,30 +205,30 @@ struct dualsense_output_report {
 };
 
 struct dualsense_feature_report_firmware {
-    uint8_t ReportID; // 0x20
-    char BuildDate[11]; // string
-    char BuildTime[8]; // string
-    uint16_t FwType;
-    uint16_t SwSeries;
-    uint32_t HardwareInfo; // 0x00FF0000 - Variation
+    uint8_t report_id; // 0x20
+    char build_date[11]; // string
+    char build_time[8]; // string
+    uint16_t fw_type;
+    uint16_t sw_series;
+    uint32_t hardware_info; // 0x00FF0000 - Variation
                            // 0x0000FF00 - Generation
                            // 0x0000003F - Trial?
                            // ^ Values tied to enumerations
-    uint32_t FirmwareVersion; // 0xAABBCCCC AA.BB.CCCC
-    char DeviceInfo[12];
+    uint32_t firmware_version; // 0xAABBCCCC AA.BB.CCCC
+    char device_info[12];
     ////
-    uint16_t UpdateVersion;
-    char UpdateImageInfo;
-    char UpdateUnk;
+    uint16_t update_version;
+    char update_image_info;
+    char update_unk;
     ////
-    uint32_t FwVersion1; // AKA SblFwVersion
+    uint32_t fw_version_1; // AKA SblFwVersion
                          // 0xAABBCCCC AA.BB.CCCC
-                         // Ignored for FwType 0
-                         // HardwareVersion used for FwType 1
-                         // Unknown behavior if HardwareVersion < 0.1.38 for FwType 2 & 3
-                         // If HardwareVersion >= 0.1.38 for FwType 2 & 3
-    uint32_t FwVersion2; // AKA VenomFwVersion
-    uint32_t FwVersion3; // AKA SpiderDspFwVersion AKA BettyFwVer
+                         // Ignored for fw_type 0
+                         // HardwareVersion used for fw_type 1
+                         // Unknown behavior if HardwareVersion < 0.1.38 for fw_type 2 & 3
+                         // If HardwareVersion >= 0.1.38 for fw_type 2 & 3
+    uint32_t fw_version_2; // AKA VenomFwVersion
+    uint32_t fw_version_3; // AKA SpiderDspFwVersion AKA BettyFwVer
                          // May be Memory Control Unit for Non Volatile Storage
     uint32_t crc32;
 };
@@ -501,12 +501,13 @@ static int command_info(struct dualsense *ds)
     struct dualsense_feature_report_firmware *ds_report;
     ds_report = (struct dualsense_feature_report_firmware *)&buf;
 
-    printf("hardware: %x,\tfirmware: %x\n", ds_report->HardwareInfo, ds_report->FirmwareVersion);
-    printf("BuildDate: %.11s,\tBuildTime: %.8s\n", ds_report->BuildDate, ds_report->BuildTime);
-    printf("FwType: %i,\tSwSeries %i\n", ds_report->FwType, ds_report->SwSeries);
-    printf("DeviceInfo: %.12s,\tUpdateVersion: %i\n", ds_report->DeviceInfo, ds_report->UpdateVersion);
-    printf("UpdateImageInfo: %c,\tUpdateUnk: %c\n", ds_report->UpdateImageInfo, ds_report->UpdateUnk);
-    printf("FwVersion1: %i,\tFwVersion2: %i,\tFwVersion3: %i\n", ds_report->FwVersion1, ds_report->FwVersion2, ds_report->FwVersion3);
+    printf("hardware: %x,\tfirmware: %x\n", ds_report->hardware_info, ds_report->firmware_version);
+    printf("build_date: %.11s,\tbuild_time: %.8s\n", ds_report->build_date, ds_report->build_time);
+    printf("fw_type: %i,\tsw_series %i\n", ds_report->fw_type, ds_report->sw_series);
+    /*printf("device_info: %.12s,\tupdate_version: %i\n", ds_report->device_info, ds_report->update_version);
+    printf("update_image_info: %c,\tupdate_unk: %c\n", ds_report->update_image_info, ds_report->update_unk);
+    printf("fw_version_1: %i,\tfw_version_2: %i,\tfw_version_3: %i\n", ds_report->fw_version_1, ds_report->fw_version_2, ds_report->fw_version_3);
+    */
 
     return 0;
 }
@@ -738,7 +739,7 @@ static int command_trigger_off(struct dualsense *ds, char *trigger)
     return command_trigger(ds, trigger, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 }
 
-static int trigger_bitmapping_array(struct dualsense *ds, char *trigger, uint8_t mode, uint8_t strength[10], uint8_t frequency)
+static int trigger_bitpacking_array(struct dualsense *ds, char *trigger, uint8_t mode, uint8_t strength[10], uint8_t frequency)
 {
     uint32_t strength_zones = 0;
     uint16_t active_zones = 0;
@@ -781,7 +782,7 @@ static int command_trigger_feedback(struct dualsense *ds, char *trigger, uint8_t
         strength_array[i] = strength;
     }
    
-    return trigger_bitmapping_array(ds, trigger, 0x21, strength_array, 0);
+    return trigger_bitpacking_array(ds, trigger, 0x21, strength_array, 0);
 }
 
 static int command_trigger_weapon(struct dualsense *ds, char *trigger, uint8_t start_position, uint8_t end_position, uint8_t strength)
@@ -827,18 +828,18 @@ static int command_trigger_vibration(struct dualsense *ds, char *trigger, uint8_
     {
         strength_array[i] = amplitude;
     }
-    return trigger_bitmapping_array(ds, trigger, 0x26, strength_array, frequency);
+    return trigger_bitpacking_array(ds, trigger, 0x26, strength_array, frequency);
 
 }
 
 static int command_trigger_feedback_raw(struct dualsense *ds, char *trigger, uint8_t strength[10] )
 {
-    return trigger_bitmapping_array(ds, trigger, 0x21, strength, 0);
+    return trigger_bitpacking_array(ds, trigger, 0x21, strength, 0);
 }
 
 static int command_trigger_vibration_raw(struct dualsense *ds, char *trigger, uint8_t strength[10], uint8_t frequency)
 {
-    return trigger_bitmapping_array(ds, trigger, 0x26, strength, frequency);
+    return trigger_bitpacking_array(ds, trigger, 0x26, strength, frequency);
 }
 
 static void print_help()
@@ -981,7 +982,7 @@ int main(int argc, char *argv[])
             return command_trigger_vibration_raw(&ds, argv[2], strengths, atoi(argv[14]));
         }
 
-        /* mostly to test raw parameters without any kind of bitmapping or range check */
+        /* mostly to test raw parameters without any kind of bitpacking or range check */
         uint8_t param1 = argc > 4 ? atoi(argv[4]) : 0;
         uint8_t param2 = argc > 5 ? atoi(argv[5]) : 0;
         uint8_t param3 = argc > 6 ? atoi(argv[6]) : 0;
