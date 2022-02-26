@@ -28,6 +28,8 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
       trigger TRIGGER MODE [PARAMS]            set the trigger (left, right or both) mode with parameters (up to 9)
 
 
+AUR: [dualsensectl-git](https://aur.archlinux.org/packages/dualsensectl-git/)
+
 ### Dependencies
 
 * libhidapi-hidraw

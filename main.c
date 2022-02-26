@@ -81,9 +81,8 @@
 #define DS_OUTPUT_AUDIO2_FLAG_BEAM_FORMING BIT(4)
 
 /* Status field of DualSense input report. */
-#define GENMASK(h, l) (((~0UL) << (l)) & (~0UL >> (32 - 1 - (h))))
-#define DS_STATUS_BATTERY_CAPACITY GENMASK(3, 0)
-#define DS_STATUS_CHARGING GENMASK(7, 4)
+#define DS_STATUS_BATTERY_CAPACITY 0xF
+#define DS_STATUS_CHARGING 0xF0
 #define DS_STATUS_CHARGING_SHIFT 4
 
 #define DS_TRIGGER_EFFECT_OFF 0x05
@@ -472,12 +471,12 @@ static int command_battery(struct dualsense *ds)
         /* battery_status = POWER_SUPPLY_STATUS_DISCHARGING; */
         break;
     case 0x1:
-        battery_capacity = min(battery_data * 10 + 5, 100);
-        /* battery_status = POWER_SUPPLY_STATUS_CHARGING; */
-        break;
-    case 0x2:
         battery_capacity = 100;
         /* battery_status = POWER_SUPPLY_STATUS_FULL; */
+        break;
+    case 0x2:
+        battery_capacity = min(battery_data * 10 + 5, 100);
+        /* battery_status = POWER_SUPPLY_STATUS_CHARGING; */
         break;
     case 0xa: /* voltage or temperature out of range */
     case 0xb: /* temperature error */
