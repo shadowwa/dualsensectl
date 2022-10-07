@@ -1,4 +1,4 @@
-												# DualSense Control
+# DualSense Control
 - _Latest version 0.3_
 
 Linux tool for controlling Sony PlayStation 5 DualSense controller.
