@@ -1,12 +1,12 @@
 CC = gcc
 CFLAGS += -Wall -Wextra -pedantic
-CFLAGS += $(shell pkg-config --cflags dbus-1)
-CFLAGS += $(shell pkg-config --cflags hidapi-hidraw)
-LIBS   += $(shell pkg-config --libs dbus-1)
-LIBS   += $(shell pkg-config --libs hidapi-hidraw)
+CFLAGS += $(shell pkgconf --cflags dbus-1)
+CFLAGS += $(shell pkgconf --cflags hidapi-hidraw)
+LIBS   += $(shell pkgconf --libs dbus-1)
+LIBS   += $(shell pkgconf --libs hidapi-hidraw)
 
 TARGET = dualsensectl
-VERSION = 0.2
+VERSION = 0.3
 
 ifeq ($(BUILD),debug)
 CFLAGS += -O0 -g
