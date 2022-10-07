@@ -1,0 +1,57 @@
+# spec file for package dualsensectl
+#
+# Copyright (c) 2022 Fabio Pesari
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+#
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+Name:          dualsensectl
+Version:       0.2
+Release:       2%{?dist}
+Summary:       Linux tool for controlling PS5 DualSense controllers
+License:       GPL-2.0-or-later
+Group:         Hardware/Joystick
+URL:           https://github.com/nowrep/%{name}
+Source0:       %{url}/archive/refs/tags/v%{Version}.tar.gz
+Source1:       https://github.com/MartinVonReichenberg/dualsensectl/archive/refs/tags/v%{Version}.tar.gz
+BuildRequires: gcc gcc-c++
+BuildRequires: dbus-devel
+BuildRequires: hidapi-devel
+
+%description
+dualsensectl is a Linux tool for controlling Sony PlayStation 5 DualSense
+controllers.
+
+%prep
+%setup -q
+# disable stripping of the binary to get debug info
+sed -i 's/ -s//' Makefile
+
+%build
+%make_build
+
+%install
+%make_install
+
+%files
+%doc README.md
+%license LICENSE
+%{_bindir}/%{name}
+%{_datadir}/bash-completion/completions/dualsensectl
+%{_datadir}/zsh/site-functions/_dualsensectl
+
+%changelog
+* Thu Jul 28 2022 Christian Birk <mail@birkc.de> - 0.2-2
+- Changes for fedora
+- Disable stripping for the build
+
+* Thu Jun 23 2022 Fabio Pesari <fpesari@tuxfamily.org>
+- First upload, v0.2
