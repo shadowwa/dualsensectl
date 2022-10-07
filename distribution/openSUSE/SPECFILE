@@ -1,0 +1,53 @@
+# spec file for package dualsensectl
+#
+# Copyright (c) 2022 Fabio Pesari
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+#
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+Name:          dualsensectl
+Version:       0.3
+Release:       0
+Summary:       Linux tool for controlling PS5 DualSense controllers
+License:       GPL-2.0-or-later
+Group:         Hardware/Joystick
+URL:           https://github.com/nowrep/dualsensectl
+Source0:       https://github.com/nowrep/dualsensectl/archive/refs/tags/v%{version}.tar.gz
+Source1:       https://github.com/MartinVonReichenberg/dualsensectl/archive/refs/tags/v%{version}.tar.gz
+BuildRequires: gcc gcc-c++
+BuildRequires: dbus-1-devel
+BuildRequires: libhidapi-devel
+
+%description
+dualsensectl is a Linux tool for controlling Sony PlayStation 5 DualSense
+controllers.
+
+%prep
+%setup -q
+
+%build
+%make_build 
+
+%install
+%make_install
+
+%files
+%doc README.md
+%license LICENSE
+%{_bindir}/%{name}
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/dualsensectl
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_dualsensectl
+
+%changelog
