@@ -20,12 +20,12 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
       microphone-led STATE                     Enable (on) or disable (off) microphone LED
 
 
-### Building (gcc)
+## Building (gcc)
 
     ./
     ~ sudo make && sudo make install
 
-### Download sources:
+## Download sources:
 - Arch Linux - AUR: [dualsensectl] (https://aur.archlinux.org/packages/dualsensectl)
 - Arch Linux - AUR: [dualsensectl-git] (https://aur.archlinux.org/packages/dualsensectl-git/) -- GIT version
 - Debian/Ubuntu - DEB: [dualsensectl] ---
@@ -33,26 +33,26 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 - Fedora - RPM: [dualsensectl] (https://copr.fedorainfracloud.org/coprs/birkch/dualsensectl/)
 - Mageia - RPM: ---
 
-### Dependencies
+## Dependencies
 
-## GENERIC (Gcc/PkgConf)
+### GENERIC (Gcc/PkgConf)
 * gcc
 * dbus-1
 * hidapi-hidraw
 
-## Arch Linux
+### Arch Linux
 * gcc
 * dbus
 * hidapi
 
-## Debian/Ubuntu
+### Debian/Ubuntu
 * gcc
 * dbus
 * libdbus-1-3
 * libdbus-1-dev
 * libhidapi-hidraw0
 
-## openSUSE
+### openSUSE
 * gcc
 * gcc-c++
 * dbus-1
@@ -60,7 +60,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 * libhidapi-devel
 * libhidapi-hidraw0
 
-## Fedora
+### Fedora
 * gcc
 * gcc-c++
 * dbus
@@ -68,7 +68,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 * hidapi
 * hidapi-devel
 
-## Mageia
+### Mageia
 * gcc 
 * gcc-c++
 * dbus
@@ -76,7 +76,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 *  lib64hidapi-devel 
 * lib64hidapi0 
 
-### udev rules (Optional)
+## udev rules (Optional)
 - _No longer neccessary to set manually_ . . .
 
 Also installed by Steam, so you may already have it configured. If not, create `/etc/udev/rules.d/70-dualsensectl.rules`:
