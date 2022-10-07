@@ -26,12 +26,12 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
     ~ sudo make && sudo make install
 
 ### Download sources:
-Arch Linux - AUR: [dualsensectl] (https://aur.archlinux.org/packages/dualsensectl)
-Arch Linux - AUR: [dualsensectl-git] (https://aur.archlinux.org/packages/dualsensectl-git/) -- GIT version
-Debian/Ubuntu - DEB: [dualsensectl] ---
-openSUSE - RPM: [dualsensectl] (https://software.opensuse.org/download/package?package=dualsensectl&project=hardware)
-Fedora - RPM: [dualsensectl] (https://copr.fedorainfracloud.org/coprs/birkch/dualsensectl/)
-Mageia - RPM: ---
+- Arch Linux - AUR: [dualsensectl] (https://aur.archlinux.org/packages/dualsensectl)
+- Arch Linux - AUR: [dualsensectl-git] (https://aur.archlinux.org/packages/dualsensectl-git/) -- GIT version
+- Debian/Ubuntu - DEB: [dualsensectl] ---
+- openSUSE - RPM: [dualsensectl] (https://software.opensuse.org/download/package?package=dualsensectl&project=hardware)
+- Fedora - RPM: [dualsensectl] (https://copr.fedorainfracloud.org/coprs/birkch/dualsensectl/)
+- Mageia - RPM: ---
 
 ### Dependencies
 
