@@ -1,6 +1,13 @@
-# spec file for package dualsensectl
+# SPEC file of dualsensectl package for Fedora
 #
-# Copyright (c) 2022 Fabio Pesari
+# AUTHORS:
+#
+# Original developer:  David Rosca <nowrep@gmail.com>
+# Arch Linux packager:  David Rosca <nowrep@gmail.com>
+# Original openSUSE packager: Fabio Pesari  <fpesari@tuxfamily.org>
+# openSUSE packager:  Martin Stibor <martin.von.reichenberg@protonmail.com>
+# Fedora packager:  Christian Birk <mail@birkc.de>
+# Debian/Ubuntu packager:  Martin Stibor <martin.von.reichenberg@protonmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,30 +18,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 #
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugzilla.opensuse.org/ | https://build.opensuse.org/ ; more info at https://en.opensuse.org/openSUSE:Submitting_bug_reports
+# Alternatively use GitHub to contact the 'developers' directly.
 
-Name:          dualsensectl
-Version:       0.3
-Release:       0
-Summary:       Linux tool for controlling PS5 DualSense controllers
-License:       GPL-2.0-or-later
-Group:         Hardware/Joystick
-URL:           https://github.com/nowrep/dualsensectl
-Source0:       https://github.com/nowrep/dualsensectl/archive/refs/tags/v%{version}.tar.gz
-Source1:       https://github.com/MartinVonReichenberg/dualsensectl/archive/refs/tags/v%{version}.tar.gz
-BuildRequires: gcc gcc-c++
-BuildRequires: dbus-1-devel
-BuildRequires: libhidapi-devel
+Name:		dualsensectl
+Version:	0.3
+Release:	1
+Summary:	Linux tool for controlling PS5 DualSense controllers
+License:	GPL-2.0-or-later
+Group:		Hardware/Joystick
+URL:		https://github.com/MartinVonReichenberg/dualsensectl
+Source0:	https://github.com/MartinVonReichenberg/dualsensectl/archive/refs/tags/%{name}-%{version}.tar.gz
+# Source1:	https://github.com/nowrep/dualsensectl/archive/refs/tags/v{version}.tar.gz#
+BuildRequires:	gcc gcc-c++
+BuildRequires:	dbus-1
+BuildRequires:	dbus-1-devel
+BuildRequires:	libhidapi-devel
+BuildRequires:	libhidapi-hidraw0
+
 
 %description
-dualsensectl is a Linux tool for controlling Sony PlayStation 5 DualSense
-controllers.
+DualSenseCTL is a Linux tool for controlling Sony PlayStation 5 DualSense controllers.
 
 %prep
 %setup -q
+sed -i 's/ -s//' Makefile  # disable stripping of the binary to keep debug info inside the original RPM package#
 
 %build
-%make_build 
+%make_build
 
 %install
 %make_install
@@ -51,3 +62,14 @@ controllers.
 %{_datadir}/zsh/site-functions/_dualsensectl
 
 %changelog
+* Wed Nov 16 2022 Martin Stibor <martin.von.reichenberg@protonmail.com> - v0.3
+- Added -d (DEVICES) option for choosing one of the multiple connected devices; by David Rosca <nowrep@gmail.com>
+- Packaging changes to Debian/Ubuntu, openSUSE/Fedora and Arch Linux
+- Build Dependencies vary for each distribution . . .
+
+* Thu Jul 28 2022 Christian Birk <mail@birkc.de> - v0.2
+- Changes for fedora
+- Disable stripping for the build
+
+* Thu Jun 23 2022 Fabio Pesari <fpesari@tuxfamily.org> - v0.2
+- First RPM build & upload
