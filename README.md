@@ -36,45 +36,22 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 ## Dependencies
 
 ### GENERIC (Gcc/PkgConf)
-* gcc
-* dbus-1
-* hidapi-hidraw
+* gcc | dbus-1 | hidapi-hidraw
 
 ### Arch Linux
-* gcc
-* dbus
-* hidapi
+* gcc | dbus | hidapi
 
 ### Debian/Ubuntu
-* gcc
-* dbus
-* libdbus-1-3
-* libdbus-1-dev
-* libhidapi-hidraw0
+* gcc | dbus | libdbus-1-3 | libdbus-1-dev | libhidapi-hidraw0
 
 ### openSUSE
-* gcc
-* gcc-c++
-* dbus-1
-* dbus-1-devel
-* libhidapi-devel
-* libhidapi-hidraw0
+* gcc | gcc-c++ | dbus-1 | dbus-1-devel | libhidapi-devel | libhidapi-hidraw0
 
 ### Fedora
-* gcc
-* gcc-c++
-* dbus
-* dbus-devel
-* hidapi
-* hidapi-devel
+* gcc | gcc-c++ | dbus | dbus-devel | hidapi | hidapi-devel
 
 ### Mageia
-* gcc 
-* gcc-c++
-* dbus
-* lib64dbus-devel
-*  lib64hidapi-devel 
-* lib64hidapi0 
+* gcc | gcc-c++ | dbus | lib64dbus-devel | lib64hidapi-devel | lib64hidapi0 
 
 ## udev rules (Optional)
 - _No longer neccessary to set manually_ . . .
