@@ -1,4 +1,5 @@
 # DualSense Control
+- _Latest version 0.3_
 
 Linux tool for controlling Sony PlayStation 5 DualSense controller.
 
@@ -33,18 +34,41 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
       trigger TRIGGER MODE [PARAMS]            set the trigger (left, right or both) mode with parameters (up to 9)
 
 
-AUR: [dualsensectl-git](https://aur.archlinux.org/packages/dualsensectl-git/)
+## Building (gcc)
 
-### Dependencies
+    ./
+    ~ sudo make && sudo make install
 
-* libhidapi-hidraw
-* libdbus-1
+## Download sources:
+- Arch Linux - AUR: [dualsensectl] (https://aur.archlinux.org/packages/dualsensectl)
+- Arch Linux - AUR: [dualsensectl-git] (https://aur.archlinux.org/packages/dualsensectl-git/) -- GIT version
+- Debian/Ubuntu - DEB: [dualsensectl] ---
+- openSUSE - RPM: [dualsensectl] (https://software.opensuse.org/download/package?package=dualsensectl&project=hardware)
+- Fedora - RPM: [dualsensectl] (https://copr.fedorainfracloud.org/coprs/birkch/dualsensectl/)
+- Mageia - RPM: ---
 
-### Building
+## Dependencies
 
-    make && make install
+### GENERIC (Gcc/PkgConf)
+* gcc | dbus-1 | hidapi-hidraw
 
-### udev rules
+### Arch Linux
+* gcc | dbus | hidapi
+
+### Debian/Ubuntu
+* gcc | dbus | libdbus-1-3 | libdbus-1-dev | libhidapi-hidraw0
+
+### openSUSE
+* gcc | gcc-c++ | dbus-1 | dbus-1-devel | libhidapi-devel | libhidapi-hidraw0
+
+### Fedora
+* gcc | gcc-c++ | dbus | dbus-devel | hidapi | hidapi-devel
+
+### Mageia
+* gcc | gcc-c++ | dbus | lib64dbus-devel | lib64hidapi-devel | lib64hidapi0 
+
+## udev rules (Optional)
+- _No longer neccessary to set manually_ . . .
 
 Also installed by Steam, so you may already have it configured. If not, create `/etc/udev/rules.d/70-dualsensectl.rules`:
 

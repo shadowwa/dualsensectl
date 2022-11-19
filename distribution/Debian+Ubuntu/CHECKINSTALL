@@ -1,0 +1,22 @@
+DualsenseCTL checkinstall
+
+This package will be built according to these values:
+
+0 -  Maintainer: [ martin.von.reichenberg@proton.me ]
+1 -  Summary: [ Linux tool for controlling Sony PlayStation 5 DualSense controller. ]
+2 -  Name:    [ dualsensectl ]
+3 -  Version: [ 0.3 ]
+4 -  Release: [ 1 ]
+5 -  License: [ GPL2 ]
+6 -  Group:   [ checkinstall ]
+7 -  Architecture: [ all ]
+8 -  Source location: [ dualsensectl-main ]
+9 -  Alternate source location: [  ]
+10 - Requires: [ gcc,dbus,pkgconf,libdbus-1-dev,libdbus-1-3,libhidapi-hidraw0 ]
+11 - Recommends: [  ]
+12 - Suggests: [  ]
+13 - Provides: [ dualsensectl ]
+14 - Conflicts: [ dualsensectl-dev ]
+15 - Replaces: [  ]
+
+Enter a number to change any of them or press ENTER to continue:
