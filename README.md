@@ -19,7 +19,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
       player-leds [NUMBER]                        Set player LEDs [1-5] or disabled [0]
       microphone [STATE]                          Enable [on] or disable [off] microphone
       microphone-led [STATE]                      Enable [on] or disable [off] microphone orange LED
-
+      monitor [add COMMAND] / [remove COMMAND]    Run shell command [COMMAND] on add/remove events
 
 ## Building from SOURCE (gcc)
 
@@ -30,13 +30,13 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 - Arch Linux - AUR: [dualsensectl] (https://aur.archlinux.org/packages/dualsensectl)
 - Arch Linux - AUR: [dualsensectl-git] (https://aur.archlinux.org/packages/dualsensectl-git/) -- GIT version
 - Debian/Ubuntu - DEB: [dualsensectl] ---  
-- openSUSE - RPM: [dualsensectl] (https://software.opensuse.org/download/package?package=dualsensectl&project=hardware)
+- openSUSE - RPM: [dualsensectl] (https://build.opensuse.org/package/show/home:MartinVonReichenberg:hardware/dualsensectl)
 - Fedora - RPM: [dualsensectl] (https://copr.fedorainfracloud.org/coprs/birkch/dualsensectl/)
 - Mageia - RPM: ---
 ## Make Dependencies
 
 ### GENERIC (Gcc/PkgConf)
-* gcc | systemd
+* gcc | systemd-dev/systemd-devel
 
 ### Arch Linux
 * gcc | dbus| systemd | systemd-libs
@@ -45,7 +45,7 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 * gcc | dbus | libdbus-1-dev | libhidapi-dev | libudev-dev
 
 ### openSUSE
-* gcc-devel | gcc-c++ | dbus-1-devel | libdbus-c++-devel | libhidapi-devel | libudev-devel | libudev-devel-64bit
+* gcc-devel | gcc-c++ | dbus-1-devel | libdbus-c++-devel | libhidapi-devel | libudev-devel
  
 ### Fedora
 * gcc | gcc-c++ | dbus-devel | hidapi-devel | systemd-devel
@@ -62,13 +62,13 @@ Linux tool for controlling Sony PlayStation 5 DualSense controller.
 * dbus | hidapi/hidapi-hidraw | udev/libudev
 
 ### Arch Linux
-* gcc | dbus | dbus-c++| hidapi | systemd-libs | libudev0-shim
+* gcc | dbus | dbus-c++ | systemd-libs | hidapi | libudev0-shim
 
 ### Debian/Ubuntu
 * gcc | dbus | libdbus-1-3 | libhidapi-hidraw0 | libudev0 | libudev1
 
 ### openSUSE
-* gcc | gcc-c++ | dbus-1 | libhidapi-hidraw0 | libhidapi-libusb0 | udev | libudev0 | libudev1
+* gcc | gcc-c++ | dbus-1 | libhidapi-hidraw0 | libhidapi-libusb0 | udev | libudev1
  
 ### Fedora
 * gcc | gcc-c++ | dbus | systemd | hidapi | systemd-devel
