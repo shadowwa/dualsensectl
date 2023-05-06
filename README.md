@@ -4,21 +4,21 @@
 Linux tool for controlling Sony PlayStation 5 DualSense controller.
 
     Usage: dualsensectl [options] command [ARGUMENTS]
-
+    
     Options:
-      -l                                          List available devices (xx:xx:xx:xx:xx:xx) (USB/Bluetooth)
-      -d [DEVICE]                                 Specify which device to use [xx:xx:xx:xx:xx:xx] (USB/Bluetooth)  
-      -w                                          Wait for shell command to complete (monitor only)
-      -h --help                                   Show this help message
-      -v --version                                Show version
+      -l                                          List available devices [xx:xx:xx:xx:xx:xx] (USB/Bluetooth)
+      -d [DEVICE]                                 Specify which device to use [xx:xx:xx:xx:xx:xx] (USB/Bluetooth)
+      -w                                          Wait for shell command to complete (Monitor only)
+      -h --help                                   Shows this help message
+      -v --version                                Shows version
     Commands:
       power-off                                   Turn off the controller (Bluetooth only)
       battery                                     Get the controller battery level and charging/discharching information
-      lightbar [STATE]                            Enable [on] or disable [off] lightbar
+      lightbar [STATE]                            Enable [ON] or disable [OFF] lightbar
       lightbar [RED] [GREEN] [BLUE] [BRIGHTNESS]  Set lightbar color and brightness [0-255] [0-255] [0-255] [0-255]
       player-leds [NUMBER]                        Set player LEDs [1-5] or disabled [0]
-      microphone [STATE]                          Enable [on] or disable [off] microphone
-      microphone-led [STATE]                      Enable [on] or disable [off] microphone orange LED
+      microphone [STATE]                          Enable [ON] or disable [OFF] microphone
+      microphone-led [STATE]                      Enable [ON] or disable [OFF] microphone orange LED
       monitor [add COMMAND] / [remove COMMAND]    Run shell command [COMMAND] on add/remove events
 
 ## Building from SOURCE (gcc)
